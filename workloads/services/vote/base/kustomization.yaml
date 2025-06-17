@@ -1,0 +1,25 @@
+# workloads/services/vote/base/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# 1. Base Kubernetes resources
+resources:
+- deployment.yaml
+- service.yaml
+- hpa.yaml
+
+# 2. Common labels/annotations (optional but recommended)
+commonLabels:
+  app.kubernetes.io/name: vote
+  app.kubernetes.io/component: frontend
+  app.kubernetes.io/part-of: voting-app
+
+# 3. Name prefix/suffix (optional)
+namePrefix: vote-
+nameSuffix: -v1  # Useful for canary deployments
+
+# 4. Image overrides (if needed)
+images:
+- name: vote-app-image
+  newName: registry/repo/vote-app
+  newTag: latest
