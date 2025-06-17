@@ -1,0 +1,89 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Temporary files
+*.bak
+*.tmp
+*.temp
+*.old
+
+# Kubernetes-specific
+*.yaml~              # backup YAMLs
+*.secret.yaml        # raw secrets (before sealing)
+secrets/examples/*.yaml  # sealed secrets may go here after sealing
+
+# Helm
+helm-chart/.helmignore
+charts/**/charts/
+charts/**/tmpcharts/
+charts/**/.helmignore
+charts/**/values.schema.json
+
+# Kustomize build outputs
+kustomization.build.yaml
+kustomize-output/
+*.build.yaml
+
+# Terraform (if used later)
+*.tfstate
+*.tfstate.backup
+.terraform/
+crash.log
+
+# Container artifacts
+*.tar
+*.img
+
+# Build artifacts
+dist/
+build/
+output/
+
+# Node.js projects (if used inside microservices)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python cache (if any script/tooling)
+__pycache__/
+*.pyc
+
+# Binaries
+*.exe
+*.out
+*.so
+*.dll
+*.bin
+
+# Shell history or credentials
+*.sh~
+.env
+.env.*
+
+# GitOps-sensitive data
+*.crt
+*.key
+*.pem
+*.enc
+
+# ArgoCD temporary data
+argocd-repos.yaml
+argocd-cm.yaml
+argocd-rbac-cm.yaml
+
+# Markdown previews / caches
+*.md.html
+
+
+# scripts
+scripts/
