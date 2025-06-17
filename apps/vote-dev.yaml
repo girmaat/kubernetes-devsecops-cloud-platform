@@ -9,7 +9,6 @@ spec:
     repoURL: https://github.com/girmaat/kubernetes-devsecops-cloud-platform
     targetRevision: main
     path: workloads/services/vote/overlays/dev
-    plugin: null
     kustomize:
       buildOptions: --enable-helm
   destination:
