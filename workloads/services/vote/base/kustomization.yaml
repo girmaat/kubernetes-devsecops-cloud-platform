@@ -5,5 +5,5 @@ helmCharts:
   - name: base-chart
     releaseName: vote
     namespace: myvote-dev
-    repo: file://../../../charts/base-chart
+    repo: file://../../../../charts/base-chart
     valuesFile: ../../overlays/dev/values.yaml
