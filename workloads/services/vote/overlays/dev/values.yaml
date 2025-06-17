@@ -1,0 +1,39 @@
+# workloads/services/vote/overlays/dev/values.yaml
+# Step 2.6.3: Helm values for vote service in dev environment
+
+replicaCount: 1
+
+image:
+  repository: girmaat/vote
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+env:
+  - name: REDIS_HOST
+    value: redis.myvote-dev.svc.cluster.local
