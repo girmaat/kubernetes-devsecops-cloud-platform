@@ -56,71 +56,71 @@ Step Description Files/Manifests Involved
 
 2.6 – Build Kustomize/Helm overlay for vote-dev
 Substep Description
-2.6.1 Implement workloads/services/vote/base/kustomization.yaml pointing to base-chart
-2.6.2 Implement workloads/services/vote/overlays/dev/kustomization.yaml
-2.6.3 Implement workloads/services/vote/overlays/dev/values.yaml with image, replica, etc.
-2.6.4 Make sure Chart.yaml exists under workloads/base-chart/
+🛡️ 2.6.1 Implement workloads/services/vote/base/kustomization.yaml pointing to base-chart
+🛡️ 2.6.2 Implement workloads/services/vote/overlays/dev/kustomization.yaml
+🛡️ 2.6.3 Implement workloads/services/vote/overlays/dev/values.yaml with image, replica, etc.
+🛡️ 2.6.4 Make sure Chart.yaml exists under workloads/base-chart/
 
 2.7 – Validate ArgoCD Sync for vote-dev
 Substep Description
-2.7.1 Confirm Application appears in ArgoCD UI
-2.7.2 Ensure Sync status is Synced, Health is Healthy
-2.7.3 Fix kustomization.yaml or Helm values if status is Unknown or OutOfSync
+🛡️ 2.7.1 Confirm Application appears in ArgoCD UI
+🛡️ 2.7.2 Ensure Sync status is Synced, Health is Healthy
+🛡️ 2.7.3 Fix kustomization.yaml or Helm values if status is Unknown or OutOfSync
 
-2.8 – (Optional) Add Kustomize overlay for app-of-apps
+🛡️ 2.8 – (Optional) Add Kustomize overlay for app-of-apps
 Substep Description
-2.8.1 Create bootstrap/overlays/dev/kustomization.yaml if needed
-2.8.2 Register app-of-apps.yaml as part of GitOps
+🛡️ 2.8.1 Create bootstrap/overlays/dev/kustomization.yaml if needed
+🛡️ 2.8.2 Register app-of-apps.yaml as part of GitOps
 
-2.10 – Re-verify GitOps Sync in ArgoCD (vote only)
+🛡️ 2.10 – Re-verify GitOps Sync in ArgoCD (vote only)
 Substep Description
-2.10.1 Inspect ArgoCD UI or run argocd app get vote-dev
-2.10.2 Confirm live manifests match what’s in Git
+🛡️ 2.10.1 Inspect ArgoCD UI or run argocd app get vote-dev
+🛡️ 2.10.2 Confirm live manifests match what’s in Git
 
-2.11 – (Optional) Implement Drift Detection + Prevention
+🛡️ 2.11 – (Optional) Implement Drift Detection + Prevention
 Substep Description
-2.11.1 Create Kyverno policy: policies/kyverno/block-manual-changes.yaml
-2.11.2 Apply Kyverno/OPA to cluster via ArgoCD
-2.11.3 Label Argo-managed resources with managed-by: argocd
-2.11.4 Add selfHeal: true, prune: true in every ArgoCD Application
+🛡️ 2.11.1 Create Kyverno policy: policies/kyverno/block-manual-changes.yaml
+🛡️ 2.11.2 Apply Kyverno/OPA to cluster via ArgoCD
+🛡️ 2.11.3 Label Argo-managed resources with managed-by: argocd
+🛡️ 2.11.4 Add selfHeal: true, prune: true in every ArgoCD Application
 
-2.12 – Deploy vote-dev to EKS
+🛡️ 2.12 – Deploy vote-dev to EKS
 Substep Description
-2.12.1 Re-provision EKS using cluster/eksctl-cluster.yaml
-2.12.2 Apply bootstrap/app-of-apps.yaml to EKS
-2.12.3 ArgoCD pulls from Git and deploys vote-dev workload
-2.12.4 Confirm health and connectivity in EKS via ArgoCD UI
+🛡️ 2.12.1 Re-provision EKS using cluster/eksctl-cluster.yaml
+🛡️ 2.12.2 Apply bootstrap/app-of-apps.yaml to EKS
+🛡️ 2.12.3 ArgoCD pulls from Git and deploys vote-dev workload
+🛡️ 2.12.4 Confirm health and connectivity in EKS via ArgoCD UI
 
 🔍 📦 Observability for ArgoCD (Logging)
-2.13 – Add ArgoCD Logging for Observability
+🛡️ 2.13 – Add ArgoCD Logging for Observability
 Substep Description
-2.13.1 Label all ArgoCD pods with log-collect=enabled
-2.13.2 Deploy Fluent Bit/Promtail under observability/
-2.13.3 Configure filters to forward logs from argocd-server, repo-server, etc.
-2.13.4 Integrate with Loki or CloudWatch Logs
-2.13.5 Build Grafana dashboards under observability/dashboards/ for Argo logs
-2.13.6 Add ArgoCD log alerts to notifications/configmap.yaml (optional)
+🛡️ 2.13.1 Label all ArgoCD pods with log-collect=enabled
+🛡️ 2.13.2 Deploy Fluent Bit/Promtail under observability/
+🛡️ 2.13.3 Configure filters to forward logs from argocd-server, repo-server, etc.
+🛡️ 2.13.4 Integrate with Loki or CloudWatch Logs
+🛡️ 2.13.5 Build Grafana dashboards under observability/dashboards/ for Argo logs
+🛡️ 2.13.6 Add ArgoCD log alerts to notifications/configmap.yaml (optional)
 
 🔒 🔍 Production-Grade Drift Detection & Prevention
-2.14 – Harden Drift Detection (beyond Kyverno)
+🛡️ 2.14 – Harden Drift Detection (beyond Kyverno)
 Substep Description
 2.14.1 Ensure all apps use automated.selfHeal=true and prune=true
-2.14.2 Use argocd app diff in automation (optional CI step)
-2.14.3 Enable ArgoCD notifications for drift events (OutOfSync, Pruned)
-2.14.4 Optionally use OPA policies to enforce Git-only source of truth
-2.14.5 Label everything with argocd.argoproj.io/instance=<app> for traceability
+🛡️ 2.14.2 Use argocd app diff in automation (optional CI step)
+🛡️ 2.14.3 Enable ArgoCD notifications for drift events (OutOfSync, Pruned)
+🛡️ 2.14.4 Optionally use OPA policies to enforce Git-only source of truth
+🛡️ 2.14.5 Label everything with argocd.argoproj.io/instance=<app> for traceability
 
 🔍 🛡️ Production-Grade Auditing
-2.15 – Audit ArgoCD and K8s Activity
+🛡️ 2.15 – Audit ArgoCD and K8s Activity
 Substep Description
-2.15.1 Enable Kubernetes API audit logs (EKS: use CloudWatch audit logging)
-2.15.2 Create audit policy file: audit/k8s-audit-policy.yaml
-2.15.3 Add ArgoCD audit log config in argocd-cm and sync via Git
-2.15.4 Ship audit logs to a central store (CloudWatch, Loki, Elasticsearch)
-2.15.5 Visualize audit logs using Grafana dashboards
-2.15.6 Set alerts for sensitive actions like manual patching or kubectl edit
+🛡️ 2.15.1 Enable Kubernetes API audit logs (EKS: use CloudWatch audit logging)
+🛡️ 2.15.2 Create audit policy file: audit/k8s-audit-policy.yaml
+🛡️ 2.15.3 Add ArgoCD audit log config in argocd-cm and sync via Git
+🛡️ 2.15.4 Ship audit logs to a central store (CloudWatch, Loki, Elasticsearch)
+🛡️ 2.15.5 Visualize audit logs using Grafana dashboards
+🛡️ 2.15.6 Set alerts for sensitive actions like manual patching or kubectl edit
 
-2.16. do steps 5-15 for each of the following:
+🛡️ 2.16. do steps 2.5-2.15 for each of the following:
 apps/worker-dev.yaml
 apps/result-dev.yaml
 apps/redis-dev.yaml
