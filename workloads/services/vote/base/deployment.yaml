@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: vote-app
-        image: k8s.gcr.io/pause:3.2  
+        image: vote-app-image:latest  
         command: ["sh", "-c", "echo 'Vote service placeholder running'; sleep infinity"]
         ports:
         - containerPort: 8080  

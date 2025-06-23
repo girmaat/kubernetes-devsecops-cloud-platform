@@ -1,3 +1,4 @@
+# gitops/applications/services/vote-app.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,11 +10,6 @@ spec:
     repoURL: https://github.com/girmaat/kubernetes-devsecops-cloud-platform
     targetRevision: HEAD
     path: workloads/services/vote/overlays/dev
-    kustomize:
-      images:
-      - name: vote-app-image
-        newName: k8s.gcr.io/pause
-        newTag: "3.2"
   destination:
     server: https://kubernetes.default.svc
     namespace: vote-dev

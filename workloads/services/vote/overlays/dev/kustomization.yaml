@@ -1,9 +1,8 @@
-# workloads/services/vote/overlays/dev/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../base
 images:
-- name: vote-app-image  # Must match name in base
+- name: vote-app-image  
   newName: k8s.gcr.io/pause
   newTag: "3.2"
