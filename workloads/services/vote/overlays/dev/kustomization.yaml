@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 - ../../base
 images:
-- name: vote-app-image  
+- name: registry/repo/vote-app
   newName: k8s.gcr.io/pause
   newTag: "3.2"
