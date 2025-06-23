@@ -1,4 +1,3 @@
-# gitops/applications/services/vote-app.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,13 +9,7 @@ spec:
     repoURL: https://github.com/girmaat/kubernetes-devsecops-cloud-platform
     targetRevision: HEAD
     path: workloads/services/vote/overlays/dev
-    kustomize: {}
+    kustomize: {}  # Pure Kustomize mode
   destination:
     server: https://kubernetes.default.svc
     namespace: vote-dev
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
