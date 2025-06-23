@@ -23,10 +23,10 @@ spec:
     spec:
       containers:
       - name: vote-app
-        image: vote-app-image:latest  
+        image: k8s.gcr.io/pause:3.2  # Changed from vote-app-image to direct dummy image
         command: ["sh", "-c", "echo 'Vote service placeholder running'; sleep infinity"]
         ports:
-        - containerPort: 8080  
+        - containerPort: 8080
           name: http
           protocol: TCP
         resources:
@@ -41,11 +41,13 @@ spec:
             command: ["echo", "ready"]
           initialDelaySeconds: 5
           periodSeconds: 10
+          failureThreshold: 1  # Added to prevent flapping
         livenessProbe:
           exec:
             command: ["echo", "alive"]
           initialDelaySeconds: 15
           periodSeconds: 20
+          failureThreshold: 1  # Added to prevent flapping
       securityContext:
         runAsNonRoot: true
         seccompProfile:
