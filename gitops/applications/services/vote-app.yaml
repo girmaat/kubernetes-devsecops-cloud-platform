@@ -10,6 +10,7 @@ spec:
     repoURL: https://github.com/girmaat/kubernetes-devsecops-cloud-platform
     targetRevision: HEAD
     path: workloads/services/vote/overlays/dev
+    kustomize: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: vote-dev

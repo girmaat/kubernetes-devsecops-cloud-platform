@@ -87,3 +87,4 @@ argocd-rbac-cm.yaml
 
 # scripts
 scripts/
+workloads/**/rendered.yaml
