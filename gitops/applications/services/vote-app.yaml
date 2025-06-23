@@ -11,7 +11,7 @@ spec:
     path: workloads/services/vote/overlays/dev
     kustomize:
       images:
-      - name: vote-app-image  # Matches what's in your kustomization.yaml
+      - name: vote-app-image
         newName: k8s.gcr.io/pause
         newTag: "3.2"
   destination:
